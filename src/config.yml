@@ -1,0 +1,17 @@
+AutoUpdate: false
+
+Email:
+
+  EmailServer: "smtp.gmail.com"
+
+  EmailPort: 465
+
+  #false - SSL
+  #true - TSL
+  EmailTLSRequired: false
+
+  EmailAuthRequired: true
+
+  EmailUsername: "username@gmail.com"
+
+  EmailPassword: "password"
