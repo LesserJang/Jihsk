@@ -21,8 +21,7 @@ public class ExprVTvarString extends SimpleExpression<String> {
     private Expression<String> objectname;
     private Expression<String> varname;
     @Override
-    public boolean init(Expression<?>[] vars, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser)
-    {
+    public boolean init(Expression<?>[] vars, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         this.objectname = (Expression<String>)vars[0];
         this.varname = (Expression<String>)vars[1];
         return true;
@@ -36,9 +35,9 @@ public class ExprVTvarString extends SimpleExpression<String> {
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             assert ob != null;
-            Main.vt.varData.setObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e), ob[0].toString());
+            Main.vardata.setObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e), ob[0].toString());
         } else if (mode == Changer.ChangeMode.DELETE) {
-            Main.vt.varData.delObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vardata.delObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Nullable
@@ -50,20 +49,11 @@ public class ExprVTvarString extends SimpleExpression<String> {
     }
 
     @Override
-    public Class<? extends String> getReturnType()
-    {
-        return String.class;
-    }
+    public Class<? extends String> getReturnType() { return String.class; }
 
     @Override
-    public String toString(Event e, boolean debug)
-    {
-        return "Jihsk ExprVTvarString";
-    }
+    public String toString(Event e, boolean debug) { return "Jihsk ExprVTvarString"; }
 
     @Override
-    public boolean isSingle()
-    {
-        return true;
-    }
+    public boolean isSingle() { return true; }
 }

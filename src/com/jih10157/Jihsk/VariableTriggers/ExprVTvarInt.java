@@ -37,15 +37,15 @@ public class ExprVTvarInt extends SimpleExpression<Integer> {
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             assert ob != null;
-            Main.vt.varData.setObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vardata.setObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.ADD) {
             assert ob != null;
-            Main.vt.varData.addObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vardata.addObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.REMOVE) {
             assert ob != null;
-            Main.vt.varData.subObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vardata.subObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.DELETE) {
-            Main.vt.varData.delObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vardata.delObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Override
@@ -58,20 +58,11 @@ public class ExprVTvarInt extends SimpleExpression<Integer> {
     }
 
     @Override
-    public Class<? extends Integer> getReturnType()
-    {
-        return Integer.class;
-    }
+    public Class<? extends Integer> getReturnType() { return Integer.class; }
 
     @Override
-    public String toString(Event e, boolean debug)
-    {
-        return "Jihsk ExprVTvarInt";
-    }
+    public String toString(Event e, boolean debug) { return "Jihsk ExprVTvarInt"; }
 
     @Override
-    public boolean isSingle()
-    {
-        return true;
-    }
+    public boolean isSingle() { return true; }
 }

@@ -35,12 +35,10 @@ public class ExprVTvarBoolean extends SimpleExpression<Boolean> {
     @Override
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
-            VariableTriggers vt = (VariableTriggers) Bukkit.getPluginManager().getPlugin("VariableTriggers");
             assert ob != null;
-            vt.varData.setObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e), Boolean.valueOf(String.valueOf(ob[0])));
+            Main.vardata.setObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e), Boolean.valueOf(String.valueOf(ob[0])));
         } else if (mode == Changer.ChangeMode.DELETE) {
-            VariableTriggers vt = (VariableTriggers) Bukkit.getPluginManager().getPlugin("VariableTriggers");
-            vt.varData.delObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vardata.delObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Override
@@ -53,20 +51,11 @@ public class ExprVTvarBoolean extends SimpleExpression<Boolean> {
     }
 
     @Override
-    public Class<? extends Boolean> getReturnType()
-    {
-        return Boolean.class;
-    }
+    public Class<? extends Boolean> getReturnType() { return Boolean.class; }
 
     @Override
-    public String toString(Event e, boolean debug)
-    {
-        return "Jihsk ExprVTvarBoolean";
-    }
+    public String toString(Event e, boolean debug) { return "Jihsk ExprVTvarBoolean"; }
 
     @Override
-    public boolean isSingle()
-    {
-        return true;
-    }
+    public boolean isSingle() { return true; }
 }
