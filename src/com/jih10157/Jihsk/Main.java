@@ -7,6 +7,7 @@ import com.jih10157.Jihsk.CallEvent.VotfilerVoteEventListener;
 import com.jih10157.Jihsk.util.Plugin.ConfigLoader;
 import com.jih10157.Jihsk.util.Plugin.Downloader;
 import com.wizardscraft.VariableTriggers.VariableTriggers;
+import com.wizardscraft.dataclass.VarData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,6 +27,7 @@ import java.net.URLClassLoader;
 public class Main extends JavaPlugin implements Listener {
     public static PluginManager pm;
     public static VariableTriggers vt;
+    public static VarData vardata;
 	private static Main instance;
     private static ConfigLoader loader;
     public static boolean mail = false;
@@ -89,7 +91,8 @@ public class Main extends JavaPlugin implements Listener {
                 }
                 if (pm.getPlugin("VariableTriggers") != null) {
                     try {
-                        vt = (VariableTriggers) pm.getPlugin("VariableTriggers");
+                        vt = (VariableTriggers)pm.getPlugin("VariableTriggers");
+                        vardata = vt.varData;
                         getLogger().info("VariableTriggers 인식");
                         sk.loadClasses("com.jih10157.Jihsk", "VariableTriggers");
                     } catch (NoClassDefFoundError ignored) { }
