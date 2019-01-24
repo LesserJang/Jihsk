@@ -36,7 +36,7 @@ public class SSLEmailSender {
         this.mailProps.put("mail.smtp.connectiontimeout", 10000);
     }
 
-    public void send(String subject, String text, String address) {
+    public void send(final String subject, final String text, final String address) {
         new BukkitRunnable() {
             public void run() {
                 Session session = Session.getDefaultInstance(SSLEmailSender.this.mailProps,

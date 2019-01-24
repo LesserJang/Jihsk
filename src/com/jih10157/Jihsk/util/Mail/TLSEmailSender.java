@@ -29,7 +29,7 @@ public class TLSEmailSender {
         this.mailProps.put("mail.smtp.connectiontimeout", 3000);
     }
 
-    public void send(String subject, String text, String address) {
+    public void send(final String subject, final String text, final String address) {
         new BukkitRunnable() {
             public void run() {
                 try {
