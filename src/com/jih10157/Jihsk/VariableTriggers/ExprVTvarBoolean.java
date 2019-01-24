@@ -30,15 +30,15 @@ public class ExprVTvarBoolean extends SimpleExpression<Boolean> {
     }
     @Override
     protected Boolean[] get(Event e) {
-        return new Boolean[] { Main.vt.varData.getObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
+        return new Boolean[] { Main.vtVar.getBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
     }
     @Override
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             assert ob != null;
-            Main.vardata.setObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e), Boolean.valueOf(String.valueOf(ob[0])));
+            Main.vtVar.setBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e), Boolean.valueOf(String.valueOf(ob[0])));
         } else if (mode == Changer.ChangeMode.DELETE) {
-            Main.vardata.delObjectBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vtVar.delBooleanData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Override

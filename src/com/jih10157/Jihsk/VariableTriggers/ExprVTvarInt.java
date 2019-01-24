@@ -31,21 +31,21 @@ public class ExprVTvarInt extends SimpleExpression<Integer> {
 
     @Override
     protected Integer[] get(Event e) {
-        return new Integer[] { Main.vt.varData.getObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
+        return new Integer[] { Main.vtVar.getIntData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
     }
     @Override
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             assert ob != null;
-            Main.vardata.setObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vtVar.setIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.ADD) {
             assert ob != null;
-            Main.vardata.addObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vtVar.addIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.REMOVE) {
             assert ob != null;
-            Main.vardata.subObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
+            Main.vtVar.subIntData(this.objectname.getSingle(e), this.varname.getSingle(e), Integer.parseInt(ob[0].toString()));
         } else if (mode == Changer.ChangeMode.DELETE) {
-            Main.vardata.delObjectIntData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vtVar.delIntData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Override

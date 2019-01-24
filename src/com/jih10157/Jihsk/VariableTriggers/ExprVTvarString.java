@@ -29,15 +29,15 @@ public class ExprVTvarString extends SimpleExpression<String> {
 
     @Override
     protected String[] get(Event e) {
-        return new String[] { Main.vt.varData.getObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
+        return new String[] { Main.vtVar.getStringData(this.objectname.getSingle(e), this.varname.getSingle(e)) };
     }
     @Override
     public void change(Event e, @Nullable Object[] ob, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             assert ob != null;
-            Main.vardata.setObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e), ob[0].toString());
+            Main.vtVar.setStringData(this.objectname.getSingle(e), this.varname.getSingle(e), ob[0].toString());
         } else if (mode == Changer.ChangeMode.DELETE) {
-            Main.vardata.delObjectStringData(this.objectname.getSingle(e), this.varname.getSingle(e));
+            Main.vtVar.delStringData(this.objectname.getSingle(e), this.varname.getSingle(e));
         }
     }
     @Nullable

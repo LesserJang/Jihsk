@@ -4,15 +4,17 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import com.jih10157.Jihsk.CallEvent.SmartMovingEventListener;
 import com.jih10157.Jihsk.CallEvent.VotfilerVoteEventListener;
+import com.jih10157.Jihsk.VariableTriggers.varData.VTVar;
+import com.jih10157.Jihsk.VariableTriggers.varData.VTVar_1;
+import com.jih10157.Jihsk.VariableTriggers.varData.VTVar_2;
 import com.jih10157.Jihsk.util.Plugin.ConfigLoader;
 import com.jih10157.Jihsk.util.Plugin.Downloader;
-import com.wizardscraft.VariableTriggers.VariableTriggers;
-import com.wizardscraft.dataclass.VarData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,8 +28,7 @@ import java.net.URLClassLoader;
 
 public class Main extends JavaPlugin implements Listener {
     public static PluginManager pm;
-    public static VariableTriggers vt;
-    public static VarData vardata;
+    public static VTVar vtVar;
 	private static Main instance;
     private static ConfigLoader loader;
     public static boolean mail = false;
@@ -90,12 +91,20 @@ public class Main extends JavaPlugin implements Listener {
                     sk.loadClasses("com.jih10157.Jihsk", "Votifier");
                 }
                 if (pm.getPlugin("VariableTriggers") != null) {
-                    try {
-                        vt = (VariableTriggers)pm.getPlugin("VariableTriggers");
-                        vardata = vt.varData;
+                    Plugin pl = pm.getPlugin("VariableTriggers");
+                    VTVar_1 vtVar_1 = new VTVar_1(this, pl);
+                    if(vtVar_1.check()) {
+                        vtVar = vtVar_1;
                         getLogger().info("VariableTriggers 인식");
                         sk.loadClasses("com.jih10157.Jihsk", "VariableTriggers");
-                    } catch (NoClassDefFoundError ignored) { }
+                    } else {
+                        VTVar_2 vtVar_2 = new VTVar_2(this, pl);
+                        if(vtVar_2.check()) {
+                            vtVar = vtVar_2;
+                            getLogger().info("VariableTriggers 인식");
+                            sk.loadClasses("com.jih10157.Jihsk", "VariableTriggers");
+                        }
+                    }
                 }
                 if (pm.getPlugin("WorldEdit") != null) {
                     getLogger().info("WorldEdit 인식");
