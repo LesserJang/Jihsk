@@ -92,13 +92,13 @@ public class Main extends JavaPlugin implements Listener {
                 }
                 if (pm.getPlugin("VariableTriggers") != null) {
                     Plugin pl = pm.getPlugin("VariableTriggers");
-                    VTVar_1 vtVar_1 = new VTVar_1(this, pl);
+                    VTVar_1 vtVar_1 = new VTVar_1(pl);
                     if(vtVar_1.check()) {
                         vtVar = vtVar_1;
                         getLogger().info("VariableTriggers 인식");
                         sk.loadClasses("com.jih10157.Jihsk", "VariableTriggers");
                     } else {
-                        VTVar_2 vtVar_2 = new VTVar_2(this, pl);
+                        VTVar_2 vtVar_2 = new VTVar_2(pl);
                         if(vtVar_2.check()) {
                             vtVar = vtVar_2;
                             getLogger().info("VariableTriggers 인식");
