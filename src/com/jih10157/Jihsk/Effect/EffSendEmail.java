@@ -17,8 +17,10 @@ import javax.annotation.Nullable;
 public class EffSendEmail extends Effect {
 
     static {
-        Skript.registerEffect(EffSendEmail.class, "[jih[sk].[ ]]send email message %string% subject %string% to %string%");
-        Main.Effamount++;
+        if(Main.mail) {
+            Skript.registerEffect(EffSendEmail.class, "[jih[sk].[ ]]send email message %string% subject %string% to %string%");
+            Main.Effamount++;
+        }
     }
     private Expression<String> address;
     private Expression<String> message;
@@ -26,7 +28,7 @@ public class EffSendEmail extends Effect {
 
     @Override
     public boolean init(Expression<?>[] e, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        if(Main.mail) {
+        if(!Main.mail) {
             Skript.error("Mail 라이브러리가 로드되어있지 않아 메일기능을 사용하실수 없습니다.");
             return false;
         }

@@ -101,7 +101,7 @@ public class Main extends JavaPlugin implements Listener {
                         VTVar_2 vtVar_2 = new VTVar_2(pl);
                         if(vtVar_2.check()) {
                             vtVar = vtVar_2;
-                            getLogger().info("VariableTriggers 인식");
+                            getLogger().info("VariableTriggers 2 인식");
                             sk.loadClasses("com.jih10157.Jihsk", "VariableTriggers");
                         }
                     }
