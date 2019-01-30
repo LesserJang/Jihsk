@@ -110,6 +110,10 @@ public class Main extends JavaPlugin implements Listener {
                     getLogger().info("WorldEdit 인식");
                     sk.loadClasses("com.jih10157.Jihsk", "WorldEdit");
                 }
+                if (pm.getPlugin("ServerWebStatus") != null) {
+                    getLogger().info("ServerWebStatus 인식");
+                    sk.loadClasses("com.jih10157.Jihsk", "ServerWebStatus");
+                }
             } catch(IOException ioe) {
                 ioe.printStackTrace();
             }

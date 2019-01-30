@@ -3,4 +3,4 @@ author: jih10157
 main: com.jih10157.Jihsk.Main
 version: 2.2
 depend: [Skript]
-softdepend: [Votifier, VariableTriggers, WorldEdit]
+softdepend: [Votifier, VariableTriggers, WorldEdit, ServerWebStatus]
