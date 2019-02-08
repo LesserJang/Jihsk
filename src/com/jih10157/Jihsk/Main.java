@@ -35,6 +35,7 @@ public class Main extends JavaPlugin implements Listener {
     public static int Effamount = 0;
     public static int Evtamount = 0;
     public static int Expramount = 0;
+    public static int Condamount = 0;
     private String newver;
     private String ver;
     @Override
@@ -117,7 +118,7 @@ public class Main extends JavaPlugin implements Listener {
             } catch(IOException ioe) {
                 ioe.printStackTrace();
             }
-            getLogger().info("Effect: "+Effamount+"개, Event: "+Evtamount+"개, Expression: "+Expramount+"개");
+            getLogger().info("Effect: "+Effamount+"개, Event: "+Evtamount+"개, Expression: "+Expramount+"개, Condition: "+Condamount+"개");
             getLogger().info("플러그인 활성화 완료!");
             getLogger().info("제작자: 짛(Uni_Jih)");
             getLogger().info("디스코드: Uni_Jih#7500");
