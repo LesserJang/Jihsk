@@ -12,8 +12,7 @@ import org.bukkit.event.Event;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class EffAddRecipe  extends Effect
-{
+public class EffAddRecipe  extends Effect {
     static {
         Skript.registerEffect(EffAddRecipe.class, "[jih[sk].[ ]]add recipe to %itemtype% using %itemtype%, %itemtype%, %itemtype%, %itemtype%, %itemtype%, %itemtype%, %itemtype%, %itemtype%, %itemtype%");
         Main.Effamount++;

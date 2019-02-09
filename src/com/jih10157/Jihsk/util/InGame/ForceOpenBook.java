@@ -1,6 +1,12 @@
 package com.jih10157.Jihsk.util.InGame;
 
+import net.minecraft.server.v1_5_R3.EntityHuman;
+import net.minecraft.server.v1_5_R3.Item;
+import net.minecraft.server.v1_5_R3.ItemSaddle;
+import net.minecraft.server.v1_5_R3.StatisticList;
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_5_R3.entity.CraftHumanEntity;
+import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,7 +25,6 @@ public class ForceOpenBook {
             _CRAFTPLAYER_CLASS = Class.forName("org.bukkit.craftbukkit." + _VERSION + ".entity.CraftPlayer");
             Class<?> _ITEMSTACK_CLASS = Class.forName("net.minecraft.server." + _VERSION + ".ItemStack");
             Class<?> _ENUMHAND_ENUM = Class.forName("net.minecraft.server." + _VERSION + ".EnumHand");
-
             _GETHANDLE_METHOD = _CRAFTPLAYER_CLASS.getMethod("getHandle");
             _A_METHOD = Class.forName("net.minecraft.server." + _VERSION + ".EntityPlayer").getMethod("a",
                     _ITEMSTACK_CLASS, _ENUMHAND_ENUM);
@@ -37,7 +42,8 @@ public class ForceOpenBook {
         } catch (Exception ex) { ex.printStackTrace(); }
     }
 
-    public static void openBook(Player player, ItemStack book) {
+    public static void openBook(Player p, ItemStack book) {
+        /*
         ItemStack itemInHand = player.getInventory().getItemInHand();
         player.getInventory().setItemInHand(book);
         try {
@@ -45,6 +51,6 @@ public class ForceOpenBook {
             Object entityPlayer = _GETHANDLE_METHOD.invoke(craftPlayer);
             _A_METHOD.invoke(entityPlayer, _ITEMSTACK, _MAIN_HAND);
         } catch (Exception ex) { ex.printStackTrace(); }
-        player.getInventory().setItemInHand(itemInHand);
+        player.getInventory().setItemInHand(itemInHand);*/
     }
 }

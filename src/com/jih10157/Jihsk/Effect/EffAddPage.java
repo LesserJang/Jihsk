@@ -5,6 +5,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
+import com.jih10157.Jihsk.Main;
 import org.bukkit.Material;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 public class EffAddPage extends Effect {
     static {
         Skript.registerEffect(EffAddPage.class, "[jih[sk].[ ]]add [a] page [with] [(text|data)] [%-string%] to [book] %itemstack%");
+        Main.Effamount++;
     }
     private Expression<String> string;
     private Expression<ItemStack> book;

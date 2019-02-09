@@ -10,9 +10,11 @@ import com.jih10157.Jihsk.VariableTriggers.varData.VTVar_2;
 import com.jih10157.Jihsk.util.Plugin.ConfigLoader;
 import com.jih10157.Jihsk.util.Plugin.Downloader;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -85,7 +87,7 @@ public class Main extends JavaPlugin implements Listener {
             } catch(Exception ignored) { }
             SkriptAddon sk = Skript.registerAddon(this);
             try {
-                sk.loadClasses("com.jih10157.Jihsk", "Effect", "Expression", "Event");
+                sk.loadClasses("com.jih10157.Jihsk", "Effect", "Expression", "Event", "Condition");
                 if (pm.getPlugin("Votifier") != null) {
                     getLogger().info("Votifier 인식");
                     pm.registerEvents(new VotfilerVoteEventListener(), this);
@@ -118,7 +120,7 @@ public class Main extends JavaPlugin implements Listener {
             } catch(IOException ioe) {
                 ioe.printStackTrace();
             }
-            getLogger().info("Effect: "+Effamount+"개, Event: "+Evtamount+"개, Expression: "+Expramount+"개, Condition: "+Condamount+"개");
+            getLogger().info("Effect: "+Effamount+"개, Event: "+Evtamount+"개, Expression: "+Expramount+"개");//, Condition: "+Condamount+"개");
             getLogger().info("플러그인 활성화 완료!");
             getLogger().info("제작자: 짛(Uni_Jih)");
             getLogger().info("디스코드: Uni_Jih#7500");
