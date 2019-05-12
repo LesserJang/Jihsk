@@ -11,8 +11,7 @@ import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
 
-public class EffResetRecipes  extends Effect
-{
+public class EffResetRecipes  extends Effect {
     static {
         Skript.registerEffect(EffResetRecipes.class, "[jih[sk].[ ]]reset recipes");
         Main.Effamount++;

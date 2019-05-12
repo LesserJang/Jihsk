@@ -2,6 +2,9 @@ package com.jih10157.Jihsk.util.Plugin;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class Downloader {
 
@@ -16,6 +19,12 @@ public class Downloader {
     }
 
     public boolean download() {
+        try(InputStream in = new URL(this.url).openStream()){
+            Files.copy(in, Paths.get(this.pluginF+File.separator+this.filename), StandardCopyOption.REPLACE_EXISTING);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }/*
         InputStream in;
         FileOutputStream out;
         try {
@@ -29,7 +38,7 @@ public class Downloader {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         return false;
     }
 }

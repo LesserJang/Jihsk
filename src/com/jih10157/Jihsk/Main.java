@@ -10,11 +10,9 @@ import com.jih10157.Jihsk.VariableTriggers.varData.VTVar_2;
 import com.jih10157.Jihsk.util.Plugin.ConfigLoader;
 import com.jih10157.Jihsk.util.Plugin.Downloader;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -37,7 +35,6 @@ public class Main extends JavaPlugin implements Listener {
     public static int Effamount = 0;
     public static int Evtamount = 0;
     public static int Expramount = 0;
-    public static int Condamount = 0;
     private String newver;
     private String ver;
     @Override
@@ -55,7 +52,7 @@ public class Main extends JavaPlugin implements Listener {
             lib.getParentFile().mkdirs();
         }
         if(!lib.exists()) {
-            Downloader downloader = new Downloader(lib.getParentFile().getAbsolutePath(), "http://jihskver.dothome.co.kr/mail-1.4.7.jar", lib.getName());
+            Downloader downloader = new Downloader(lib.getParentFile().getAbsolutePath(), "https://jih10157.github.io/Jihsk/mail-1.4.7.jar", lib.getName());
             if(!downloader.download()) {
                 getLogger().info("Mail Lib 다운에러: " + lib.getName());
                 getLogger().info("메일 기능을 사용할수 없습니다.");
@@ -113,10 +110,6 @@ public class Main extends JavaPlugin implements Listener {
                     getLogger().info("WorldEdit 인식");
                     sk.loadClasses("com.jih10157.Jihsk", "WorldEdit");
                 }
-                if (pm.getPlugin("ServerWebStatus") != null) {
-                    getLogger().info("ServerWebStatus 인식");
-                    sk.loadClasses("com.jih10157.Jihsk", "ServerWebStatus");
-                }
             } catch(IOException ioe) {
                 ioe.printStackTrace();
             }
@@ -126,9 +119,8 @@ public class Main extends JavaPlugin implements Listener {
             getLogger().info("디스코드: Uni_Jih#7500");
             this.newver = updateCheck();
             this.ver = getDescription().getVersion();
-            assert this.newver != null;
-            if (!(this.newver.equals(this.ver))) {
-                getLogger().info("최신버전이 있습니다! 현재버전: "+this.ver+" 최신버전: "+this.newver);
+            if (this.newver != null && !(this.newver.equals(this.ver))) {
+                getLogger().info("최신버전이 있습니다! 현재버전: " + this.ver + " 최신버전: " + this.newver);
             }
         }
 	}
@@ -137,7 +129,7 @@ public class Main extends JavaPlugin implements Listener {
         loader.Load();
 	    if (!(this.newver.equals(this.ver))) {
             if(ConfigLoader.autoUpdate) {
-                Downloader downloader = new Downloader(getFile().getParentFile().getAbsolutePath(),"http://jihskver.dothome.co.kr/Jihsk.jar", "Jihsk.jar");
+                Downloader downloader = new Downloader(getFile().getParentFile().getAbsolutePath(),"https://jih10157.github.io/Jihsk/Jihsk.jar", "Jihsk.jar");
                 if(downloader.download()) {
                     getLogger().info("플러그인이 자동으로 업데이트되었습니다.");
                 } else {
@@ -151,7 +143,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
     private static String updateCheck() {
         try {
-            URL url = new URL("http://jihskver.dothome.co.kr/");
+            URL url = new URL("https://jih10157.github.io/Jihsk/Version.txt");
             BufferedReader r = new BufferedReader(new InputStreamReader(url.openStream()));
             String version = r.readLine();
             r.close();
