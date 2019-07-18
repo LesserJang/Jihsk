@@ -160,7 +160,7 @@ public class Main extends JavaPlugin implements Listener {
             p.sendMessage("§6[Jihsk] §6v" + getDescription().getVersion());
         }
         if (p.isOp()) {
-            if (!(this.newver.equals(this.ver))) {
+            if (this.newver != null && !(this.newver.equals(this.ver))) {
                 p.sendMessage("§6[Jihsk] §f최신버전이 있습니다! 현재버전: " + this.ver + " 최신버전: " + this.newver);
                 p.sendMessage("§6[Jihsk] §f이 메시지는 오피에게만 출력됩니다.");
             }
